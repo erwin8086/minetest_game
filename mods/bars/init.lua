@@ -1,3 +1,11 @@
+--[[
+	Hud Bars [bars]
+	Displays bars for water, food, energy and mana
+	Add sprinting and water glass.
+	Makes food useable for regen food bar.
+	By erwin8086: WTFPL
+]]
+
 bars = {}
 bars.stat = {}
 bars.hud  = {}
@@ -259,6 +267,24 @@ function bars.drink(amount, replace)
 	end
 end
 
+function bars.use_mana(amount, player)
+	if not player then return end
+	local name = player:get_player_name()
+	if not name then return end
+	if not bars.stat[name] then return end
+	if amount > 0 then
+		local mana = bars.stat[name].mana * bars.stat[name].mmana
+		mana = mana - amount
+		if mana >= 0 then
+			bars.stat[name].mana = math.floor(mana/bars.stat[name].mmana)
+			update_bars(player, name)
+			return true
+		else
+			return false
+		end
+	end
+end
+
 minetest.register_craftitem("bars:water_glass", {
 	description = "Water Glass",
 	inventory_image = "bars_water.png^vessels_drinking_glass.png",
@@ -287,4 +313,8 @@ minetest.override_item("default:stick", {
 			end
 		end
 	end,
+	-- Function to test bars.use_mana
+	--[[on_place = function(stack, user, pt)
+		bars.use_mana(2, user)
+	end,]]
 })

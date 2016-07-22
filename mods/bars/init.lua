@@ -11,6 +11,11 @@ bars.stat = {}
 bars.hud  = {}
 local save = minetest.get_worldpath().."/bars"
 
+if minetest.setting_getbool("enable_damage") ~= true then
+	bars.use_mana = function() return true end
+	return
+end
+
 local function load_stat(name)
 	minetest.mkdir(save)
 	local f = io.open(save.."/"..name, "r")
@@ -109,7 +114,7 @@ minetest.register_globalstep(function(dtime)
 					update_bars(player, name)
 				end
 				
-				-- Set Spped
+				-- Set Speed
 				if c.aux1 and (bars.stat[name].energy or 0) > 3 then
 					bars.stat[name].energy = bars.stat[name].energy - 1
 					player:set_physics_override({
@@ -123,6 +128,23 @@ minetest.register_globalstep(function(dtime)
 					player:set_physics_override({
 						speed = 0.1
 					})
+				end
+				
+				-- Regen Healt
+				if bars.stat[name].energy > 15 and bars.stat[name].water > 15 and
+					bars.stat[name].food > 15 and math.random(2) == 1 then
+					local hp = player:get_hp()
+					if hp < 20 then
+						player:set_hp(hp+1)
+					end
+				end
+				
+				-- Starve if no water or food
+				if bars.stat[name].water <= 0 or bars.stat[name].food <= 0 then
+					local hp = player:get_hp()
+					if hp >= 2 then
+						player:set_hp(hp-1)
+					end
 				end
 			end
 		end
@@ -317,4 +339,22 @@ minetest.override_item("default:stick", {
 	--[[on_place = function(stack, user, pt)
 		bars.use_mana(2, user)
 	end,]]
+})
+
+minetest.register_chatcommand("bars_heal", {
+	description = "Heal all Bars",
+	privs = {give=true},
+	func = function(name, param)
+		if not name then return end
+		if not bars.stat[name] then return end
+		bars.stat[name].water = 20
+		bars.stat[name].food = 20
+		bars.stat[name].energy = 20
+		bars.stat[name].mana = 20
+		local player = minetest.get_player_by_name(name)
+		if not player then return end
+		player:set_hp(20)
+		update_bars(player, name)
+		minetest.chat_send_player(name, "You heal'ed")
+	end,
 })

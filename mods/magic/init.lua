@@ -133,3 +133,6 @@ minetest.override_item("default:stick", {
 		end
 	end,
 })
+
+-- Magic project bench
+dofile(minetest.get_modpath("magic").."/project.lua")

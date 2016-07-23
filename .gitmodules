@@ -1,3 +1,6 @@
 [submodule "minetest-3d_armor"]
 	path = minetest-3d_armor
 	url = https://github.com/erwin8086/minetest-3d_armor
+[submodule "clothing"]
+	path = clothing
+	url = https://github.com/erwin8086/clothing

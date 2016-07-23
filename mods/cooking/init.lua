@@ -33,8 +33,6 @@ function cooking.register_recipe(input, output, byproduct, time)
 	recipes[input] = {[1]=output, [2]=byproduct, [3]=time or 1}
 end
 
-dofile(minetest.get_modpath("cooking").."/recipes.lua")
-
 minetest.register_node("cooking:stick", {
 	description = "Cooking Stick",
 	drawtype = "mesh",
@@ -353,4 +351,52 @@ minetest.register_node("cooking:basic_torch", {
 		minetest.remove_node(pos)
 		return false
 	end,
+	
+	on_use = function(stack, user, pt)
+		if pt.type ~= "node" then return end
+		local node = minetest.get_node(pt.under)
+		if node.name ~= "cooking:fireplace" then return end
+		if not stack or stack:is_empty() then return end
+		local meta = stack:get_metadata()
+		if not meta or meta == "" then return end
+		local burn = tonumber(meta)
+		if burn > minetest.get_gametime() then
+			minetest.add_node(pt.under, {name="cooking:fireplace_burn"})
+			stack:take_item()
+			return stack
+		else
+			return ItemStack()
+		end
+	end,
 })
+
+magic.register_infusion("cooking:fireplace_burn", {
+	level=1,
+	mana=1.5,
+	action = function(pos, player)
+		local meta = minetest.get_meta(pos)
+		local timer = minetest.get_node_timer(pos)
+		local burn = meta:get_int("burn")
+		burn = math.floor(burn-timer:get_elapsed())
+		if burn > 0 then
+			timer:stop()
+			minetest.swap_node(pos, {name="cooking:fireplace"})
+			meta:set_int("burn", burn)
+		end
+	end,
+})
+
+magic.register_infusion("cooking:fireplace", {
+	mana = 0.5,
+	action = function(pos, player)
+		local meta = minetest.get_meta(pos)
+		local burn = meta:get_int("burn")
+		if burn and burn > 0 then
+			local timer = minetest.get_node_timer(pos)
+			minetest.swap_node(pos, {name="cooking:fireplace_burn"})
+			timer:start(burn)
+		end
+	end,
+})
+
+dofile(minetest.get_modpath("cooking").."/recipes.lua")

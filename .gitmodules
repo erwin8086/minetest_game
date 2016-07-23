@@ -4,3 +4,6 @@
 [submodule "clothing"]
 	path = clothing
 	url = https://github.com/erwin8086/clothing
+[submodule "unified_inventory"]
+	path = unified_inventory
+	url = https://github.com/erwin8086/unified_inventory

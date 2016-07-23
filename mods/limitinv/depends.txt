@@ -1,0 +1,2 @@
+clothing
+unified_inventory

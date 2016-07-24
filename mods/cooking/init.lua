@@ -384,7 +384,8 @@ minetest.register_node("cooking:basic_torch", {
 			stack:take_item()
 			return stack
 		else
-			return ItemStack()
+			stack:set_count(0)
+			return stack
 		end
 	end,
 })
@@ -420,3 +421,4 @@ magic.register_infusion("cooking:fireplace", {
 
 dofile(minetest.get_modpath("cooking").."/recipes.lua")
 dofile(minetest.get_modpath("cooking").."/better.lua")
+dofile(minetest.get_modpath("cooking").."/modules.lua")

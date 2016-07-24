@@ -190,10 +190,15 @@ minetest.register_craftitem("cooking:basic_lighter", {
 	on_use = function(stack, user, pt)
 		if pt.type ~= "node" then return end
 		local node = minetest.get_node(pt.under)
-		if node.name ~= "cooking:fireplace" then return end
+		local ndef = minetest.registered_nodes[node.name]
+		if (not ndef or not ndef.set_fire) and node.name ~= "cooking:fireplace" then return end
 		stack:take_item()
 		if math.random(10) == 1 then
-			minetest.add_node(pt.under, {name="cooking:fireplace_burn"})
+			if ndef.set_fire then
+				ndef.set_fire(pt.under)
+			else
+				minetest.add_node(pt.under, {name="cooking:fireplace_burn"})
+			end
 		end
 		return stack
 	end,
@@ -205,6 +210,11 @@ local fuels = {}
 local function add_fuel(stack, user, pt)
 	if pt.type ~= "node" then return end
 	local node = minetest.get_node(pt.under)
+	local ndef = minetest.registered_nodes[node.name]
+	if ndef and ndef.on_punch then
+		local new = ndef.on_punch(pt.under, node, user, pt)
+		if new then return new end
+	end
 	if node.name ~= "cooking:fireplace_burn" then return end
 	local n = stack:get_name()
 	if not fuels[n] then return end
@@ -263,12 +273,15 @@ minetest.override_item("default:stick", {
 		end
 	end,
 	on_place = function(stack, user, pt)
-		if pt.type == "node" and minetest.get_node(pt.under).name == "cooking:fireplace_burn" then
-			local torch = ItemStack("cooking:basic_torch")
-			-- Torch burns 10m
-			torch:set_metadata(minetest.get_gametime() + 10*60)
-			torch:set_count(stack:get_count())
-			return torch
+		if pt.type == "node" then
+			local node = minetest.get_node(pt.under)
+			if node.name == "cooking:fireplace_burn" or node.name == "cooking:firebox_open_burn" then
+				local torch = ItemStack("cooking:basic_torch")
+				-- Torch burns 10m
+				torch:set_metadata(minetest.get_gametime() + 10*60)
+				torch:set_count(stack:get_count())
+				return torch
+			end
 		end
 		if old_stick_place then
 			old_stick_place(stack, user, pt)
@@ -284,6 +297,7 @@ cooking.register_fireplace_fuel("default:tree", 60)
 minetest.register_node("cooking:basic_torch", {
 	description = "Basic Torch",
 	drawtype = "torchlike",
+	drop = "",
 	tiles = {
 		{
 			name = "default_torch_on_floor_animated.png",
@@ -355,13 +369,18 @@ minetest.register_node("cooking:basic_torch", {
 	on_use = function(stack, user, pt)
 		if pt.type ~= "node" then return end
 		local node = minetest.get_node(pt.under)
-		if node.name ~= "cooking:fireplace" then return end
+		local ndef = minetest.registered_nodes[node.name]
+		if (not ndef or not ndef.set_fire) and node.name ~= "cooking:fireplace" then return end
 		if not stack or stack:is_empty() then return end
 		local meta = stack:get_metadata()
 		if not meta or meta == "" then return end
 		local burn = tonumber(meta)
 		if burn > minetest.get_gametime() then
-			minetest.add_node(pt.under, {name="cooking:fireplace_burn"})
+			if ndef.set_fire then
+				ndef.set_fire(pt.under)
+			else
+				minetest.add_node(pt.under, {name="cooking:fireplace_burn"})
+			end
 			stack:take_item()
 			return stack
 		else
@@ -400,3 +419,4 @@ magic.register_infusion("cooking:fireplace", {
 })
 
 dofile(minetest.get_modpath("cooking").."/recipes.lua")
+dofile(minetest.get_modpath("cooking").."/better.lua")

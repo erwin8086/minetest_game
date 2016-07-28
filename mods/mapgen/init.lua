@@ -1,3 +1,8 @@
+--[[
+	Map Generator for MagicSky
+	by erwin8086
+]]
+
 local mapgen = {}
 mapgen.next = {x=-30912, y=-30912}
 mapgen.players = {}
@@ -13,6 +18,8 @@ local function savedata()
 		f:close()
 	end
 end
+
+skygen.savedata = savedata
 
 local function loaddata()
 	local f = io.open(savefile, "r")
@@ -43,8 +50,7 @@ local function nextspawn()
 		end
 end
 
-
-minetest.register_on_joinplayer(function(player)
+function skygen.new_spawn(player)
 	if not player then return end
 	local name = player:get_player_name()
 	if not name then return end
@@ -52,6 +58,8 @@ minetest.register_on_joinplayer(function(player)
 	local n = mapgen.next
 	-- Calcualte 3d pos from 2d
 	local spawn = {x=n.x+64, z=n.y+64, y=64}
+	-- Go save and spawn two trees
+	default.grow_tree(spawn, true)
 	minetest.after(1, function()
 		default.grow_tree(spawn, true)
 		local pspawn = {x=spawn.x, y=spawn.y, z=spawn.z}
@@ -65,7 +73,10 @@ minetest.register_on_joinplayer(function(player)
 		savedata()
 	end)
 	nextspawn()
-end)
+end
+
+
+minetest.register_on_joinplayer(skygen.new_spawn)
 
 local time = 0
 minetest.register_globalstep(function(dtime)
@@ -97,3 +108,7 @@ minetest.register_on_respawnplayer(function(player)
 	player:setpos(mapgen.players[name])
 	return true
 end)
+
+local path=minetest.get_modpath("mapgen")
+dofile(path.."/protect.lua")
+dofile(path.."/team.lua")

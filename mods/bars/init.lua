@@ -56,6 +56,14 @@ local function update_bars(player, name)
 	if player and name then
 		local hud = bars.hud[name]
 		local stat = bars.stat[name]
+		if not hud then
+			hud = {}
+			bars.hud[name] = hud
+		end
+		if not stat then
+			stat = {}
+			bars.stat[name] = stat
+		end
 		if hud.food and hud.water and hud.energy and hud.mana and stat then
 			-- Minimal value
 			if (stat.food or -1) < 0 then stat.food = 0 end

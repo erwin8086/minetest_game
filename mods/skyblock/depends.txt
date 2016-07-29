@@ -1,0 +1,10 @@
+magic
+bars
+mapgen
+limitinv
+cooking
+default
+nyancat
+farming
+flowers
+unified_inventory

@@ -1,0 +1,1 @@
+nyancat.generate = function() end

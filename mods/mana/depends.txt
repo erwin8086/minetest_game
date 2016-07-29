@@ -1,0 +1,3 @@
+bars
+magic
+unified_inventory

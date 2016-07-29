@@ -28,6 +28,10 @@ local function formspec(pos) return "size[8,7]"..
 				
 local recipes = {}
 
+function cooking.get_recipes()
+	return recipes
+end
+
 function cooking.register_recipe(input, output, byproduct, time)
 	if not input or not output then return end
 	recipes[input] = {[1]=output, [2]=byproduct, [3]=time or 1}
@@ -419,6 +423,6 @@ magic.register_infusion("cooking:fireplace", {
 	end,
 })
 
-dofile(minetest.get_modpath("cooking").."/recipes.lua")
+--dofile(minetest.get_modpath("cooking").."/recipes.lua") -- Recipes moved to skyblock
 dofile(minetest.get_modpath("cooking").."/better.lua")
 dofile(minetest.get_modpath("cooking").."/modules.lua")

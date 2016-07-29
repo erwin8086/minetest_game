@@ -92,20 +92,7 @@ function magic.register_infusion(node, recipe)
 	magic.inf[node] = recipe
 end
 
-magic.register_rod("magic:simple_nature", {
-	description = "Simple Nature Road uses energy from Leaves",
-	image="default_stick.png^magic_simple_nature.png",
-})
-
-magic.register_rod("magic:better_nature", {
-	description = "Better Nature Road uses energy from Apples",
-	image="default_stick.png^magic_better_nature.png",
-	level=1,
-	uses = 500,
-	mana = 2,
-})
-
-dofile(minetest.get_modpath("magic").."/recipes.lua")
+dofile(minetest.get_modpath("magic").."/rod.lua")
 
 local old_stick_use = minetest.registered_items["default:stick"].on_use
 
@@ -136,3 +123,6 @@ minetest.override_item("default:stick", {
 
 -- Magic project bench
 dofile(minetest.get_modpath("magic").."/project.lua")
+
+-- Recipes moved to skyblock
+--dofile(minetest.get_modpath("magic").."/recipes.lua")

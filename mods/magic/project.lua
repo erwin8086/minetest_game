@@ -1,5 +1,9 @@
 local recipes = {}
 
+function magic.get_project_recipes()
+	return recipes
+end
+
 -- Register types
 do
 	local types = {"nature"}
@@ -22,16 +26,6 @@ function magic.register_recipe(t, def)
 	def.mana = def.mana or 1
 	recipes[t][#recipes[t]+1] = def
 end
-
-magic.register_recipe("nature", {
-	output = "default:sand",
-	recipe = {"cooking:dryleaves", "cooking:dryleaves"}
-})
-
-magic.register_recipe("nature", {
-	output = "default:tree",
-	recipe = {"group:wood", "cooking:dryleaves"}
-})
 
 -- From lua-users.org
 function string.starts(String,Start)

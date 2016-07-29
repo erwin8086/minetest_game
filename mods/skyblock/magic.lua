@@ -1,3 +1,9 @@
+magic.register_transform("skyblock:dryleaves", {
+	output = "default:dry_shrub",
+	level = 1,
+	mana = 0.5,
+})
+
 magic.register_transform("default:leaves", {
 	output = "default:dirt",
 	mana = 0.5,
@@ -60,5 +66,5 @@ end
 
 magic.register_recipe("nature", {
 	output = "default:sand",
-	recipe = {"cooking:dryleaves", "cooking:dryleaves"}
+	recipe = {"skyblock:dryleaves", "skyblock:dryleaves"}
 })

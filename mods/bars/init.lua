@@ -86,8 +86,24 @@ local function update_bars(player, name)
 	end
 end
 
+function bars.mana_tick(time, player, name)
+	if time > 5500 and time < 18500 then
+		if bars.stat[name].mana < 20 then
+			bars.stat[name].mana = bars.stat[name].mana + 1
+			update_bars(player, name)
+		end
+	else
+		if bars.stat[name].mana > 0 then
+			bars.stat[name].mana = bars.stat[name].mana - 1
+			update_bars(player, name)
+		end
+	end
+	return 4
+end
+
 local food = 0
 local mana = 0
+local mana_ticks = {}
 minetest.register_globalstep(function(dtime)
 	food = food + dtime
 	if food > 5 then
@@ -159,23 +175,18 @@ minetest.register_globalstep(function(dtime)
 	end
 	
 	mana = mana + dtime
-	if mana > 30 then
+	if mana > 8 then
 		mana = 0
 		local time = minetest.get_timeofday()*24000
 		for _, player in ipairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
 			if not name then return end
 			if not bars.stat[name] then return end
-			if time > 5500 and time < 18500 then
-				if bars.stat[name].mana < 20 then
-					bars.stat[name].mana = bars.stat[name].mana + 1
-					update_bars(player, name)
-				end
+			if not mana_ticks[name] then mana_ticks[name] = 0 end
+			if mana_ticks[name] < 1 then
+				mana_ticks[name] = bars.mana_tick(time, player, name)
 			else
-				if bars.stat[name].mana > 0 then
-					bars.stat[name].mana = bars.stat[name].mana - 1
-					update_bars(player, name)
-				end
+				mana_ticks[name] = mana_ticks[name] - 1
 			end
 		end
 	end

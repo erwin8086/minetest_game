@@ -60,13 +60,15 @@ minetest.register_craft({
 	}
 })
 
+-- Disable torch for cooking
+--[[
 minetest.register_craft({
 	output = 'default:torch 4',
 	recipe = {
 		{'default:coal_lump'},
 		{'group:stick'},
 	}
-})
+})]]
 
 minetest.register_craft({
 	output = 'default:pick_wood',
@@ -865,12 +867,11 @@ minetest.register_craft({
 	burntime = 60,
 })
 
--- Disbale this for cooking
---[[minetest.register_craft({
+minetest.register_craft({
 	type = "fuel",
 	recipe = "default:torch",
 	burntime = 4,
-})]]
+})
 
 minetest.register_craft({
 	type = "fuel",

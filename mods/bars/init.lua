@@ -366,3 +366,16 @@ minetest.register_chatcommand("bars_heal", {
 		minetest.chat_send_player(name, "You heal'ed")
 	end,
 })
+
+-- Heal bars if player die
+minetest.register_on_respawnplayer(function(player)
+	local name = player:get_player_name()
+	if not name then return end
+	bars.stat[name].water = 20
+	bars.stat[name].food = 20
+	bars.stat[name].energy = 20
+	bars.stat[name].mana = 20
+	bars.stat[name].mmana = 1
+	update_bars(player, name)
+	return false
+end)

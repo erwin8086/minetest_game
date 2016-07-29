@@ -371,14 +371,15 @@ minetest.register_craft( {
 	recipe = {"default:chest", "default:steel_ingot"},
 })
 
-minetest.register_craft({
+-- Disable this for cooking
+--[[minetest.register_craft({
 	output = 'default:furnace',
 	recipe = {
 		{'group:stone', 'group:stone', 'group:stone'},
 		{'group:stone', '', 'group:stone'},
 		{'group:stone', 'group:stone', 'group:stone'},
 	}
-})
+})]]
 
 minetest.register_craft({
 	type = "shapeless",
@@ -864,11 +865,12 @@ minetest.register_craft({
 	burntime = 60,
 })
 
-minetest.register_craft({
+-- Disbale this for cooking
+--[[minetest.register_craft({
 	type = "fuel",
 	recipe = "default:torch",
 	burntime = 4,
-})
+})]]
 
 minetest.register_craft({
 	type = "fuel",

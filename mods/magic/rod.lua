@@ -42,3 +42,30 @@ magic.register_rod("magic:good_earth", {
 	uses = 300,
 	mana = 1,
 })
+
+magic.register_rod("magic:simple_water", {
+	description = "Simple Water Road uses energy from Water",
+	image="default_stick.png^magic_simple_water.png",
+	type="water",
+	liquids_pointable = true,
+})
+
+magic.register_rod("magic:better_water", {
+	description = "Better Water Road uses energy from Ice",
+	image="default_stick.png^magic_better_water.png",
+	type="water",
+	level=1,
+	uses = 500,
+	mana = 2,
+	liquids_pointable = true,
+})
+
+magic.register_rod("magic:good_water", {
+	description = "Better Water Road uses energy from Papyrus",
+	image="default_stick.png^magic_good_water.png",
+	type="water",
+	level=2,
+	uses = 300,
+	mana = 1,
+	liquids_pointable = true,
+})

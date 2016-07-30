@@ -6,7 +6,7 @@ end
 
 -- Register types
 do
-	local types = {"nature"}
+	local types = {"nature", "earth", "water"}
 	for _, t in ipairs(types) do
 		recipes[t] = {}
 	end

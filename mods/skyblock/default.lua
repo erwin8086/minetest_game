@@ -25,3 +25,124 @@ magic.register_infusion("default:stone", {
 		end
 	end,
 })
+
+magic.register_transform("default:stone", {
+	type="earth",
+	output="default:desert_stone",
+	mana = 0.5,
+})
+
+magic.register_transform("default:desert_stone", {
+	type="earth",
+	output="default:sandstone",
+	mana = 0.5,
+})
+
+magic.register_recipe("earth", {
+	output = "default:obsidian",
+	recipe = {"default:stone", "default:stone", "default:stone",
+			"default:stone", "default:sandstone", "default:desert_stone",
+			"default:stone", "default:desert_stone", "default:sandstone"},
+	mana = 0.5,
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:dirt_with_grass",
+	recipe = { "default:dirt", "group:grass"} 
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:dirt_with_grass",
+	recipe = { "default:dirt", "group:dry_grass"} 
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:dirt_with_snow",
+	recipe = { "default:dirt", "default:snow"} 
+})
+
+magic.register_transform("default:sand", {
+	type="earth",
+	output="default:desert_sand",
+	mana = 0.5,
+})
+
+magic.register_infusion("default:sand", {
+	type="earth",
+	output="default:gravel",
+	mana = 0.5,
+})
+
+magic.register_transform("default:water_source", {
+	type="water",
+	output="default:ice",
+	mana = 0.5,
+})
+
+magic.register_transform("default:ice", {
+	type="water",
+	output="default:snowblock",
+	mana = 0.5,
+})
+
+magic.register_infusion("skyblock:dryleaves", {
+	level = 1,
+	output = "default:jungleleaves",
+	mana = 0.5,
+})
+
+magic.register_transform("skyblock:jungleleaves", {
+	level = 1,
+	output = "acacia_leaves",
+	mana = 0.5,
+})
+
+magic.register_transform("skyblock:acacia_levaes", {
+	level = 1,
+	output = "aspen_leaves",
+	mana = 0.5,
+})
+
+magic.register_transform("default:aspen_leaves", {
+	level = 1,
+	output = "default:pine_needles",
+	mana = 0.5,
+})
+
+magic.register_recipe("nature", {
+	output = "default:papyrus",
+	recipe = {"group:grass", "group:grass", nil,
+			"group:grass", "default:sapling" },
+	mana = 2.5,
+})
+
+magic.register_transform("default:papyrus", {
+	output = "default:cactus",
+	mana = 2.5,
+	level = 1,
+})
+
+for i=1,5 do
+	magic.register_transform("default:grass_"..i, {
+		output = "default:junglegrass",
+		mana = 1.5,
+		level = 1,
+	})
+end
+
+magic.register_infusion("default:water_source", {
+	type = "water",
+	level = 1,
+	mana = 2,
+	output = "default:river_water_source",
+})
+
+magic.register_recipe("water", {
+	output = "default:lava_source",
+	recipe = {"default:water_source", "default:cobble", nil,
+			"cooking:basic_torch", "cooking:basic_torch"},
+	mana = 3,
+})

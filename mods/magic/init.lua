@@ -58,6 +58,7 @@ function magic.register_rod(name, def)
 	def.type = def.type or "nature"
 	def.uses = def.uses or 1000
 	def.mana = def.mana or 3
+	def.liquids_pointable = def.liquids_pointable or false
 	def.description = def.description or "Magic Rod"
 	def.image = def.image or "unknown.png"
 	minetest.register_tool(name, {
@@ -71,6 +72,7 @@ function magic.register_rod(name, def)
 		inventory_image = def.image,
 		on_use = do_transform,
 		on_place = do_infusion,
+		liquids_pointable=def.liquids_pointable,
 	})
 end
 

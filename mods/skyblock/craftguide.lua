@@ -27,7 +27,7 @@ for input, def in pairs(cooking.get_recipes()) do
 		})
 	end
 end
-local rod = {["nature"] = "magic:simple_nature"},
+local rod = {["nature"] = "magic:simple_nature", ["earth"] = "magic:simple_earth", ["water"] = "magic:simple_water"},
 
 unified_inventory.register_craft_type("transform", {
 	description = "Magic Transform",

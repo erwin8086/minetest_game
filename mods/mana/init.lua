@@ -35,11 +35,11 @@ function bars.mana_tick(time, player, name)
 	end
 	bars.stat[name].mmana = store
 	if keep and not (time >= 5500 and time <= 18500) then
-		bars.stat[name].mana = bars.stat[name].mana + keep_heal
+		bars.stat[name].mana = bars.stat[name].mana + (bars.MAX_MANA/20)*keep_heal
 	end
 	local node = minetest.get_node(player:getpos())
 	if node.name == "cooking:basic_torch" then
-		bars.stat[name].mana = bars.stat[name].mana + 3
+		bars.stat[name].mana = bars.stat[name].mana + (bars.MAX_MANA/20)*3
 	end
 	old_tick(time, player, name)
 	return heal

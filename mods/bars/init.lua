@@ -7,6 +7,7 @@
 ]]
 
 bars = {}
+bars.MAX_MANA=400
 bars.stat = {}
 bars.hud  = {}
 local save = minetest.get_worldpath().."/bars"
@@ -26,7 +27,7 @@ local function load_stat(name)
 		if not stat then stat = {} end
 	end
 	stat.food = stat.food or 20
-	stat.mana = stat.mana or 20
+	stat.mana = stat.mana or bars.MAX_MANA
 	stat.water = stat.water or 20
 	stat.energy = stat.energy or 20
 	stat.mmana = stat.mmana or 1
@@ -40,7 +41,7 @@ local function save_stat(name)
 		stat = {}
 	end
 	stat.food = stat.food or 20
-	stat.mana = stat.mana or 20
+	stat.mana = stat.mana or bars.MAX_MANA
 	stat.water = stat.water or 20
 	stat.energy = stat.energy or 20
 	stat.mmana = stat.mmana or 1
@@ -74,11 +75,11 @@ local function update_bars(player, name)
 			if (stat.food or 21) > 20 then stat.food = 20 end
 			if (stat.water or 21) > 20 then stat.water = 20 end
 			if (stat.energy or 21) > 20 then stat.energy = 20 end
-			if (stat.mana or 21) > 20 then stat.mana = 20 end
+			if (stat.mana or bars.MAX_MANA) > bars.MAX_MANA then stat.mana = bars.MAX_MANA end
 			
 			player:hud_change(hud.water, "number", bars.stat[name].water or 20)
 			player:hud_change(hud.food, "number", bars.stat[name].food or 20 )
-			player:hud_change(hud.mana, "number", bars.stat[name].mana or 20 )
+			player:hud_change(hud.mana, "number", math.floor(bars.stat[name].mana/(bars.MAX_MANA/20)) or 20 )
 			player:hud_change(hud.energy, "number", bars.stat[name].energy or 20 )
 			
 			save_stat(name)
@@ -88,13 +89,13 @@ end
 
 function bars.mana_tick(time, player, name)
 	if time > 5500 and time < 18500 then
-		if bars.stat[name].mana < 20 then
-			bars.stat[name].mana = bars.stat[name].mana + 1
+		if bars.stat[name].mana < bars.MAX_MANA then
+			bars.stat[name].mana = bars.stat[name].mana + bars.MAX_MANA/20
 			update_bars(player, name)
 		end
 	else
 		if bars.stat[name].mana > 0 then
-			bars.stat[name].mana = bars.stat[name].mana - 1
+			bars.stat[name].mana = bars.stat[name].mana - bars.MAX_MANA/20
 			update_bars(player, name)
 		end
 	end
@@ -369,7 +370,7 @@ minetest.register_chatcommand("bars_heal", {
 		bars.stat[name].water = 20
 		bars.stat[name].food = 20
 		bars.stat[name].energy = 20
-		bars.stat[name].mana = 20
+		bars.stat[name].mana = bars.MAX_MANA
 		local player = minetest.get_player_by_name(name)
 		if not player then return end
 		player:set_hp(20)

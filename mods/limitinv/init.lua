@@ -27,6 +27,10 @@ function clothing.update_inventory(self, player)
 	return old_update(self, player)
 end
 
+minetest.register_on_joinplayer(function(player)
+	clothing:update_inventory(player)
+end)
+
 function unified_inventory.get_player_main(player, formspec, ui_peruser, n)
 	local inv = player:get_inventory()
 	local block = inv:get_size("main")

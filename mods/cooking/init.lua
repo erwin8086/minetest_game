@@ -1,3 +1,14 @@
+--[[
+	Cooking and smelting[cooking]
+	Adds a fireplace and a firebox for fire energy
+	Adds cooking sticks for cooking over fireplaces and
+		smelter for smelting over firebox
+	Smelting recipes are the recipes for the default:furnace
+	
+	By erwin8086: WTFPL
+
+]]
+
 cooking = {}
 
 local box = {

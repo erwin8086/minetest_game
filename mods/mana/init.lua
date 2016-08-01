@@ -1,3 +1,11 @@
+--[[
+	Utils for mana with is provided by the bars mod[mana]
+	Addes varios utils for equipping in the mana inventory.
+	Provides more storage, faster healing, healing at nigth
+	
+	By erwin8086: WTFPL
+]]
+
 local utils = {
 	["mana:simple_storage"] = {action="store", value=2},
 	["mana:simple_healer"] = {action="healer", value=3},

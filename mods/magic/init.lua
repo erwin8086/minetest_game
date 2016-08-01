@@ -1,3 +1,12 @@
+--[[
+	Magic rods and a magic project table[magic]
+	Adds 3 diferent types of magic.
+	Adds 9 diferent rods(for each type a simple, better and good)
+	Adds a Magic Project table
+	
+	By erwin8086: WTFPL
+]]
+
 magic = {}
 
 magic.trans = {}

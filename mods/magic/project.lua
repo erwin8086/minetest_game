@@ -98,9 +98,9 @@ minetest.register_node("magic:project", {
 			local out = magic.get_output(input, stack)
 			if out then
 				local rod = stack:get_definition().magic_rod
-				if rod and bars.use_mana(out.mana * rod.mana, player) then
+				if rod and inv:room_for_item("output", ItemStack(out.output)) and bars.use_mana(out.mana * rod.mana, player) then
 					inv:set_list("input", {})
-					inv:set_stack("output", 1, ItemStack(out.output))
+					inv:add_item("output", ItemStack(out.output))
 					stack:add_wear(rod.uses)
 					local pinv = player:get_inventory()
 					if pinv:room_for_item("main", stack) then

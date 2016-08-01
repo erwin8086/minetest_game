@@ -1,6 +1,10 @@
 --[[
 	Map Generator for MagicSky
-	by erwin8086
+	You spawn at a single apple tree.
+	Provides support for building teams,
+	and a protection for your area while you online.
+	
+	By erwin8086: WTFPL
 ]]
 
 local mapgen = {}

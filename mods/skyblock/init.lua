@@ -1,3 +1,12 @@
+--[[
+	Skyblock a mod for use with magicsky.
+	Combines the other mods and adds the recipes.
+	It also loads the recipes in unified_inventory.
+	
+	By erwin8086: WTFPL
+
+]]
+
 skyblock = {}
 
 local path = minetest.get_modpath("skyblock")

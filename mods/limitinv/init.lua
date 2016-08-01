@@ -1,5 +1,8 @@
 --[[
 	Limit space in invetory based on clothings
+	Depends on the clothing mod (with is included in this game)
+	
+	By erwin8086: WTFPL
 ]]
 
 local old_update = clothing.update_inventory

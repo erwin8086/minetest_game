@@ -113,7 +113,7 @@ minetest.register_globalstep(function(dtime)
 			local name = player:get_player_name()
 			if name then
 				if not bars.stat[name] then return end
-				-- Consume energy
+				-- Heal energy
 				if (math.random(14) == 1 and bars.stat[name].food > 0 and bars.stat[name].water > 0) or
 						(math.random(4) == 1 and bars.stat[name].food > 15 and bars.stat[name].water > 15) then
 					if bars.stat[name].energy < 20 then

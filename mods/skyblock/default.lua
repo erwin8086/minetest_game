@@ -9,6 +9,11 @@ local ores = {
 
 function skyblock.register_ore(name, chance)
 	if not name or not chance then return end
+	unified_inventory.register_craft({
+		type="infusion",
+		output=name,
+		items = {"default:stone "..chance, "magic:simple_earth"},
+	})
 	ores[name] = chance
 end
 
@@ -25,6 +30,14 @@ magic.register_infusion("default:stone", {
 		end
 	end,
 })
+
+for ore, chance in pairs(ores) do
+	unified_inventory.register_craft({
+		type="infusion",
+		output=ore,
+		items = {"default:stone "..chance, "magic:simple_earth"},
+	})
+end
 
 magic.register_transform("default:stone", {
 	type="earth",
@@ -94,15 +107,15 @@ magic.register_infusion("skyblock:dryleaves", {
 	mana = 0.5,
 })
 
-magic.register_transform("skyblock:jungleleaves", {
+magic.register_transform("default:jungleleaves", {
 	level = 1,
-	output = "acacia_leaves",
+	output = "default:acacia_leaves",
 	mana = 0.5,
 })
 
-magic.register_transform("skyblock:acacia_levaes", {
+magic.register_transform("default:acacia_leaves", {
 	level = 1,
-	output = "aspen_leaves",
+	output = "default:aspen_leaves",
 	mana = 0.5,
 })
 
@@ -159,6 +172,12 @@ magic.register_transform("default:dirt", {
 		end
 	end,
 	level=1,
+})
+
+unified_inventory.register_craft({
+	type="transform",
+	output="default:cobble 5",
+	items = {"default:dirt 3", "magic:simple_nature"},
 })
 
 magic.register_transform("default:leaves", {

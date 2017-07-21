@@ -1,0 +1,30 @@
+Basic rules:
+* Light == power
+* Vitamins
+* Things that logically use electric power shold use it.
+* Things that can go off shold got off
+  most food, iron tools
+* Things that shold require steel shold use carboon steel instead of iron
+* Plastic shold require LV machines
+* Things that logically require plastic shold use plastic
+
+To add:
+* a new lv distribution system for short distances (16 blocks)
+  without physical wires
+* a fridge to cool things (maybe)
+* more bronze (maybe)
+    * Aluminium bronze
+    * Leadbronze
+    * Silicium bronze
+
+misc:
+* Oilextract from leaves trowght extraction
+  * Parafin and lube from oilextract trowght extraction
+  * Recepies with lube...
+  * Plastic from Parafin with compressor
+OR: Add an mineraloil mod...
+
+
+mods:
+
+

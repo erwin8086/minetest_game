@@ -22,3 +22,12 @@
 [submodule "mods/xdecor"]
 	path = mods/xdecor
 	url = https://github.com/erwin8086/xdecor
+[submodule "mods/unifieddyes"]
+	path = mods/unifieddyes
+	url = https://github.com/erwin8086/unifieddyes
+[submodule "signs_lib"]
+	path = mods/signs_lib
+	url = https://github.com/erwin8086/signs_lib
+[submodule "homedecor"]
+	path = homedecor
+	url = https://github.com/erwin8086/homedecor_modpack

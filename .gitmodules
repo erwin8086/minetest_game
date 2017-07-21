@@ -19,3 +19,6 @@
 [submodule "technic"]
 	path = technic
 	url = https://github.com/erwin8086/technic
+[submodule "mods/xdecor"]
+	path = mods/xdecor
+	url = https://github.com/erwin8086/xdecor

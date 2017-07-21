@@ -31,3 +31,6 @@
 [submodule "homedecor"]
 	path = homedecor
 	url = https://github.com/erwin8086/homedecor_modpack
+[submodule "mods/plasticbox"]
+	path = mods/plasticbox
+	url = https://github.com/erwin8086/plasticbox

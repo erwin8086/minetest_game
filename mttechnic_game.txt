@@ -24,6 +24,11 @@ misc:
   * Plastic from Parafin with compressor
 OR: Add an mineraloil mod...
 
+TODO:
+
+* Craftguide for treetap
+* Paraffin craft not shown...
+
 
 mods:
 

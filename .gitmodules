@@ -1,0 +1,3 @@
+[submodule "mods/unified_inventory"]
+	path = mods/unified_inventory
+	url = https://github.com/erwin8086/unified_inventory.git

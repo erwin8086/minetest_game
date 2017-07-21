@@ -4,3 +4,18 @@
 [submodule "mods/farming"]
 	path = mods/farming
 	url = https://github.com/erwin8086/farming
+[submodule "mods/moreblocks"]
+	path = mods/moreblocks
+	url = https://github.com/erwin8086/moreblocks
+[submodule "mods/pipeworks"]
+	path = mods/pipeworks
+	url = https://github.com/erwin8086/pipeworks
+[submodule "mods/moreores"]
+	path = mods/moreores
+	url = https://github.com/erwin8086/moreores
+[submodule "mesecons"]
+	path = mesecons
+	url = https://github.com/erwin8086/mesecons
+[submodule "technic"]
+	path = technic
+	url = https://github.com/erwin8086/technic

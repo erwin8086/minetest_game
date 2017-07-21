@@ -1,3 +1,10 @@
+MT Technic Game [mttechnic_game]
+================================
+A subgame focused on technic mods based on minetest_game
+Please see mod folders for their licenses.
+
+See below for information about minetest_game.
+
 Minetest Game [minetest_game]
 =============================
 The main subgame for the Minetest engine

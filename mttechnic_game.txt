@@ -8,13 +8,16 @@ Basic rules:
 * Light == power
   N: we need a list of all nodes that gives light...
   N: maybe use luacmd?
+  - What about decorative only things -> we cannot cut power because the only deco
+  - so it does not matter if the connected or not?
 
 * Vitamins
+  - exist such a mod or need it to be written?
 * Things that logically use electric power shold use it.
 * Things that can go off shold got off
   most food, iron tools
 * Things that shold require steel shold use carboon steel instead of iron
-* Plastic shold require LV machines
+V Plastic shold require LV machines -> Added alternative wastefull recipe for the start...
 * Things that logically require plastic shold use plastic
 
 To add:
@@ -40,11 +43,41 @@ v Oilextract from leaves trowght extraction
 OR: Add an mineraloil mod...
 
 * (low priority) Alter the xdecor workbench, so it craft other things using the Hammer
+* (low priority) Food in the Oven/Microwave and Ores in the furnace/el. furnace
+
+* Only wood, stone and iron can be repauired in the Workbench
+V circular saw produce the same items as the workbench(and more)
+  - The gamestage is workbench -> circular saw(requires iron)
+* Check the CNC machine for redunance/usefullness -> Maybe change something
+
+* Give the Toaster, coffemaker(we have alredy coffe) some function
+* Non technic recipes shold use metal plates...
 
 TODO:
 
 V Craftguide for treetap
 V Paraffin craft not shown...
+
+Things that shold use power:
+* ? Homedecor computer but the are decorative?
+* Microwave
+* Oven
+* Refrigator shold preserve food if has power
+  - We need food spoil...
+* Soda machine
+* xdecor:tv - create a not powered texture
+* Pipework pump
+* Pipeworks autocrafter
+* Dispenser
+* Deployer
+* Injector (stack and item)
+
+
+Things that shold use plastic:
+
+
+Things that shold use lube oil:
+* technic:motor
 
 
 mods:

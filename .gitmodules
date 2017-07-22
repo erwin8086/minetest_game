@@ -34,3 +34,6 @@
 [submodule "mods/plasticbox"]
 	path = mods/plasticbox
 	url = https://github.com/erwin8086/plasticbox
+[submodule "mods/hudbars"]
+	path = mods/hudbars
+	url = http://repo.or.cz/minetest_hudbars/mttechnic_game.git

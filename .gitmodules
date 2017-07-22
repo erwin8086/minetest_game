@@ -73,3 +73,12 @@
 [submodule "plantlife"]
 	path = plantlife
 	url = https://github.com/erwin8086/plantlife_modpack
+[submodule "minetest-thirsty"]
+	path = mods/thirsty
+	url = https://github.com/erwin8086/minetest-thirsty
+[submodule "3d_armor_mttechnic"]
+	path = 3d_armor
+	url = https://github.com/erwin8086/minetest-3d_armor
+[submodule "mods/hbarmor"]
+	path = mods/hbarmor
+	url = http://repo.or.cz/minetest_hbarmor/mttechnic_game.git

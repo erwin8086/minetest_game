@@ -64,3 +64,12 @@
 [submodule "mods/mob_horse"]
 	path = mods/mob_horse
 	url = https://github.com/erwin8086/mob_horse
+[submodule "mods/biome_lib"]
+	path = mods/biome_lib
+	url = https://github.com/erwin8086/biome_lib
+[submodule "mods/moretrees"]
+	path = mods/moretrees
+	url = https://github.com/erwin8086/moretrees
+[submodule "plantlife"]
+	path = plantlife
+	url = https://github.com/erwin8086/plantlife_modpack

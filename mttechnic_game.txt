@@ -45,6 +45,8 @@ OR: Add an mineraloil mod...
 * (low priority) Alter the xdecor workbench, so it craft other things using the Hammer
 * (low priority) Food in the Oven/Microwave and Ores in the furnace/el. furnace
 
+* (medium priority) check mtfood recipes for comaptiblity -> Only one milk, sugar, etc item in game
+
 * Only wood, stone and iron can be repauired in the Workbench
 V circular saw produce the same items as the workbench(and more)
   - The gamestage is workbench -> circular saw(requires iron)

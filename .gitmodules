@@ -43,3 +43,24 @@
 [submodule "mods/mtfoods"]
 	path = mods/mtfoods
 	url = https://github.com/erwin8086/mtfoods
+[submodule "mods/nssm"]
+	path = mods/nssm
+	url = https://github.com/erwin8086/nssm
+[submodule "mods/nssb"]
+	path = mods/nssb
+	url = https://github.com/erwin8086/nssb
+[submodule "mods/mobs_redo"]
+	path = mods/mobs_redo
+	url = https://github.com/erwin8086/mobs_redo
+[submodule "mods/mobs_animals"]
+	path = mods/mobs_animals
+	url = https://github.com/erwin8086/mobs_animal
+[submodule "mods/mobs_monster"]
+	path = mods/mobs_monster
+	url = https://github.com/erwin8086/mobs_monster
+[submodule "mods/mobs_npc"]
+	path = mods/mobs_npc
+	url = https://github.com/erwin8086/mobs_npc
+[submodule "mods/mob_horse"]
+	path = mods/mob_horse
+	url = https://github.com/erwin8086/mob_horse

@@ -1,5 +1,14 @@
+Legende:
+* TODO
+v partial done
+V DONE!
+X on ice for now
+
 Basic rules:
 * Light == power
+  N: we need a list of all nodes that gives light...
+  N: maybe use luacmd?
+
 * Vitamins
 * Things that logically use electric power shold use it.
 * Things that can go off shold got off
@@ -18,16 +27,24 @@ To add:
     * Silicium bronze
 
 misc:
-* Oilextract from leaves trowght extraction
-  * Parafin and lube from oilextract trowght extraction
+v Oilextract from leaves trowght extraction
+  V Parafin and lube from oilextract trowght extraction
+	- I added a alternative (wastefull) approch to get plastic
+	- Treetap recipe changed to not require pipes
+	- Extractor requires pipes so you must craft the plastic using the treetap and torches...
+	- Treetap can get oil extract from leaves 1/5 (chance)
+	- Treetap uses bowl from xdecor
+
   * Recepies with lube...
-  * Plastic from Parafin with compressor
+  X Plastic from Parafin with compressor (maybe we need the extractor first, check for craftableity without plastic
 OR: Add an mineraloil mod...
+
+* (low priority) Alter the xdecor workbench, so it craft other things using the Hammer
 
 TODO:
 
-* Craftguide for treetap
-* Paraffin craft not shown...
+V Craftguide for treetap
+V Paraffin craft not shown...
 
 
 mods:

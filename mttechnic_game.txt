@@ -50,7 +50,11 @@ OR: Add an mineraloil mod...
 
 * (medium priority) check mtfood recipes for comaptiblity -> Only one milk, sugar, etc item in game
 
-* Only wood, stone and iron can be repauired in the Workbench
+* Only wood, stone and iron can be repaired in the Workbench
+
+* Add mods: nixie_tubes, travelnet(shold require power), luacmd(maybe add some other things for testing...), digtron(shold use battery insted of coal?), doc+doc_minetest_game(maybe add some more doc's for other things)
+* Add more food mods and make them compatible -> spoil...
+
 V circular saw produce the same items as the workbench(and more)
   - The gamestage is workbench -> circular saw(requires iron)
 * Check the CNC machine for redunance/usefullness -> Maybe change something

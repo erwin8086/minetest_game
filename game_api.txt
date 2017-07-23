@@ -862,3 +862,17 @@ for the wielded skeleton key.
 
 if `nil` is returned, it is assumed that the wielder did not have
 permissions to create a key for this node, and no key is created.
+
+
+Spoil
+-----
+Spoil let perishable items go off(simply removes them from inv's)
+
+minetest.register_<node, craftitem or tool>(<name>, {
+   ...
+   spoil = <days to go off>,
+   ...
+})
+
+Every inventory in this subgame shold be registered!
+spoil.register_inv(<nodename>, {<list1>, ...})

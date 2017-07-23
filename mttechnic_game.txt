@@ -16,6 +16,9 @@ Basic rules:
 * Things that logically use electric power shold use it.
 * Things that can go off shold got off
   most food, iron tools
+  - Item spoil patial done, need to add inv's and food's to the list
+  - To add an food item simply add 'spoil = <days>' to the def
+  - To add an inv simply add spoil to depends.txt and call 'spoil.register_inv(<nodename>, {<list1>, ... })'
 * Things that shold require steel shold use carboon steel instead of iron
 V Plastic shold require LV machines -> Added alternative wastefull recipe for the start...
 * Things that logically require plastic shold use plastic

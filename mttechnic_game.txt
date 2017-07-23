@@ -53,7 +53,9 @@ V circular saw produce the same items as the workbench(and more)
 * Check the CNC machine for redunance/usefullness -> Maybe change something
 
 * Give the Toaster, coffemaker(we have alredy coffe) some function
-* Non technic recipes shold use metal plates...
+* Non technic recipes shold use metal plates too...
+* Add more awards...
+
 
 TODO:
 

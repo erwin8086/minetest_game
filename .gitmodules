@@ -88,3 +88,15 @@
 [submodule "mods/compassgps"]
 	path = mods/compassgps
 	url = https://github.com/erwin8086/compassgps
+[submodule "mods/another_charcoal"]
+	path = mods/another_charcoal
+	url = https://github.com/erwin8086/another_charcoal
+[submodule "mods/awards"]
+	path = mods/awards
+	url = https://github.com/erwin8086/awards
+[submodule "mods/digilines"]
+	path = mods/digilines
+	url = https://github.com/erwin8086/digilines
+[submodule "mods/digiline_remote"]
+	path = mods/digiline_remote
+	url = https://github.com/erwin8086/digiline_remote

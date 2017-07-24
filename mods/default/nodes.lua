@@ -663,6 +663,7 @@ minetest.register_node("default:apple", {
 	sunlight_propagates = true,
 	walkable = false,
 	is_ground_content = false,
+	spoil=5,
 	selection_box = {
 		type = "fixed",
 		fixed = {-3 / 16, -7 / 16, -3 / 16, 3 / 16, 4 / 16, 3 / 16}
@@ -2007,6 +2008,10 @@ function default.register_chest(name, d)
 
 	minetest.register_node("default:" .. name, def_closed)
 	minetest.register_node("default:" .. name .. "_open", def_opened)
+
+	-- Items in chest spoil
+	spoil.register_inv("default:"..name, {"main"})
+	spoil.register_inv("default:"..name.."_open", {"main"})
 
 	-- convert old chests to this new variant
 	minetest.register_lbm({

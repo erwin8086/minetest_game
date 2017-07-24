@@ -84,6 +84,10 @@ minetest.register_node("vessels:shelf", {
 	end,
 })
 
+-- Spoil items in the shelf
+-- Because we maybe want wine, ... stored there
+spoil.register_inv("vessels:shelf", {"vessels"})
+
 minetest.register_craft({
 	output = "vessels:shelf",
 	recipe = {

@@ -295,6 +295,10 @@ minetest.register_node("default:furnace", {
 	allow_metadata_inventory_take = allow_metadata_inventory_take,
 })
 
+-- Items in the furnace can spoil...
+spoil.register_inv("default:furnace", {"src", "dst", "fuel"})
+spoil.register_inv("default:furnace_active", {"src", "dst", "fuel"})
+
 minetest.register_node("default:furnace_active", {
 	description = "Furnace",
 	tiles = {

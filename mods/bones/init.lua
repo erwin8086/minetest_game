@@ -122,6 +122,9 @@ minetest.register_node("bones:bones", {
 	end,
 })
 
+-- Let item's spoil...
+spoil.register_inv("bones:bones", {"main"})
+
 local function may_replace(pos, player)
 	local node_name = minetest.get_node(pos).name
 	local node_definition = minetest.registered_nodes[node_name]

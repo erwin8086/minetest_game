@@ -56,7 +56,7 @@ function spoil.register_inv(node, lists)
 		action = check,
 	})
 	minetest.register_lbm({
-		name = "spoil:inv_"..node:gsub(":", "_"),
+		name = ":spoil:inv_"..node:gsub(":", "_"),
 		nodenames = {node},
 		run_at_every_load=true,
 		action = check,

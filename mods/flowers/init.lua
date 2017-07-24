@@ -179,7 +179,8 @@ minetest.register_node("flowers:mushroom_red", {
 	selection_box = {
 		type = "fixed",
 		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
-	}
+	},
+	spoil=5,
 })
 
 minetest.register_node("flowers:mushroom_brown", {
@@ -198,7 +199,8 @@ minetest.register_node("flowers:mushroom_brown", {
 	selection_box = {
 		type = "fixed",
 		fixed = {-3 / 16, -0.5, -3 / 16, 3 / 16, -2 / 16, 3 / 16},
-	}
+	},
+	spoil=5,
 })
 
 

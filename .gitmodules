@@ -106,3 +106,12 @@
 [submodule "mods/areas"]
 	path = mods/areas
 	url = https://github.com/erwin8086/areas
+[submodule "mods/easyvend"]
+	path = mods/easyvend
+	url = http://repo.or.cz/minetest_easyvend/mttechnic_game.git
+[submodule "food"]
+	path = food
+	url = https://github.com/erwin8086/food
+[submodule "mods/food_sweet"]
+	path = mods/food_sweet
+	url = https://github.com/erwin8086/food_sweet

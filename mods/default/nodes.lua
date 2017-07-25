@@ -1092,7 +1092,7 @@ minetest.register_node("default:mese", {
 	paramtype = "light",
 	groups = {cracky = 1, level = 2},
 	sounds = default.node_sound_stone_defaults(),
-	light_source = 3,
+	light_source = 0,
 })
 
 
@@ -2334,7 +2334,7 @@ minetest.register_node("default:brick", {
 })
 
 
-minetest.register_node("default:meselamp", {
+light.register_light("default:meselamp", {
 	description = "Mese Lamp",
 	drawtype = "glasslike",
 	tiles = {"default_meselamp.png"},
@@ -2344,9 +2344,12 @@ minetest.register_node("default:meselamp", {
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 	light_source = default.LIGHT_MAX,
+	-- For light
+	power_type="electric",
+	eu_demand=7,
 })
 
-minetest.register_node("default:mese_post_light", {
+light.register_light("default:mese_post_light", {
 	description = "Mese Post Light",
 	tiles = {"default_mese_post_light_top.png", "default_mese_post_light_top.png",
 		"default_mese_post_light_side_dark.png", "default_mese_post_light_side_dark.png",
@@ -2359,6 +2362,10 @@ minetest.register_node("default:mese_post_light", {
 			{-2 / 16, -8 / 16, -2 / 16, 2 / 16, 8 / 16, 2 / 16},
 		},
 	},
+	-- Params for light
+	power_type = "electric",
+	eu_demand = 7,
+
 	paramtype = "light",
 	light_source = default.LIGHT_MAX,
 	sunlight_propagates = true,

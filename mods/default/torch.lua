@@ -35,7 +35,7 @@ See LICENSE.txt and http://www.gnu.org/licenses/lgpl-2.1.txt
 
 --]]
 
-minetest.register_node("default:torch", {
+light.register_light("default:torch", {
 	description = "Torch",
 	drawtype = "mesh",
 	mesh = "torch_floor.obj",
@@ -45,6 +45,10 @@ minetest.register_node("default:torch", {
 		    name = "default_torch_on_floor_animated.png",
 		    animation = {type = "vertical_frames", aspect_w = 16, aspect_h = 16, length = 3.3}
 	}},
+	-- For light
+	power_type = "fuel",
+	burntime = 10,
+
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
@@ -86,13 +90,17 @@ minetest.register_node("default:torch", {
 	end
 })
 
-minetest.register_node("default:torch_wall", {
+light.register_light("default:torch_wall", {
 	drawtype = "mesh",
 	mesh = "torch_wall.obj",
 	tiles = {{
 		    name = "default_torch_on_floor_animated.png",
 		    animation = {type = "vertical_frames", aspect_w = 16, aspect_h = 16, length = 3.3}
 	}},
+	-- For light
+	power_type = "fuel",
+	burntime = 10,
+
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
@@ -107,13 +115,17 @@ minetest.register_node("default:torch_wall", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node("default:torch_ceiling", {
+light.register_light("default:torch_ceiling", {
 	drawtype = "mesh",
 	mesh = "torch_ceiling.obj",
 	tiles = {{
 		    name = "default_torch_on_floor_animated.png",
 		    animation = {type = "vertical_frames", aspect_w = 16, aspect_h = 16, length = 3.3}
 	}},
+	-- For light
+	power_type = "fuel",
+	burntime = 10,
+
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,

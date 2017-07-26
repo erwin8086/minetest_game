@@ -876,3 +876,22 @@ minetest.register_<node, craftitem or tool>(<name>, {
 
 Every inventory in this subgame shold be registered!
 spoil.register_inv(<nodename>, {<list1>, ...})
+
+Light
+-----
+Use light.register_light instead of minetest.register_node
+
+light.register_light(name, {
+   <nodedef>,
+   -- Type of used power
+   power_type = "fuel" or "electric",
+   -- How long it shold burn -> only for fuel type
+   -- time is a time like in the fuel craft -> coal = 40
+   -- time is multiplyed by 100 -> coal = 4000 = 66min
+   -- burntime of torch = 10 = 40/4 -> you get 4 torch of one coal
+   burntime = <time>,
+   -- How much eu it shold use -> 5-10 is recommened
+   -- Think of a normal House, you shold able to use one Generator for all lamps...
+   eu_demand = <eu>,
+
+})

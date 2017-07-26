@@ -5,9 +5,11 @@ V DONE!
 X on ice for now
 
 Basic rules:
-* Light == power
+V Light == power
   N: we need a list of all nodes that gives light...
   N: maybe use luacmd?
+  - Light uses fuel or electric power now
+  - If lamps are added we must use light.register_light
   - What about decorative only things -> we cannot cut power because the only deco
   - so it does not matter if the connected or not?
 

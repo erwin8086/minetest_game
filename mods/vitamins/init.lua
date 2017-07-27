@@ -22,6 +22,17 @@ for _, vit in ipairs(vitamins.list) do
 	vitamins.index_list[vit[3]] = {vit[1], vit[2]}
 end
 
+local vf = io.open(minetest.get_worldpath().."/vitamins.lua", "r")
+local vits
+if vf then
+	vits = minetest.deserialize(vf:read("*all"))
+	vf:close()
+end
+
+if not vits then
+	vits = {}
+end
+
 local store = minetest.get_mod_storage()
 
 function vitamins.get_def(def)
@@ -135,15 +146,19 @@ function vitamins.eat(player, item)
 	if not player then return end
 
 	local name = player:get_player_name()
-	local idef = item:get_definition()
 	local stat = {}
 	for _, vit in ipairs(vitamins.list) do
 		stat[vit[3]] = store:get_int(name.."_"..vit[1])
 		stat[vit[3]] = stat[vit[3]] - 5
 	end
-	if idef.vitamins then
-		for _, vit in ipairs(idef.vitamins) do
+	if vits[item:get_name()] then
+		for _, vit in ipairs(vits[item:get_name()]) do
 			stat[vit[1]] = vit[2] + stat[vit[1]] + 5
+			if stat[vit[1]] > 200 then
+				stat[vit[1]] = 200
+			elseif stat[vit[1]] < 0 then
+				stat[vit[1]] = 0
+			end
 		end
 	end
 	for _, vit in ipairs(vitamins.list) do
@@ -157,6 +172,20 @@ minetest.register_chatcommand("vitamins", {
 	description = "Show your vitamin status",
 	privs = {interact=true},
 	func = function(name, param)
+		if param == "item" then
+			local player = minetest.get_player_by_name(name)
+			if not player then return end
+			local stack = player:get_wielded_item()
+			local v = vits[stack:get_name()]
+			local res = ""
+			if v then
+				for _, d in ipairs(v) do
+					res=res..vitamins.index_list[d[1]][2].." = "..tostring(d[2]).."%\n"
+				end
+				return true, res
+			end
+			return
+		end
 		local stat = vitamins.get(name)
 		local res = ""
 		for _, vit in ipairs(stat) do
@@ -165,3 +194,34 @@ minetest.register_chatcommand("vitamins", {
 		return true, res
 	end,
 })
+
+-- Taken from xdecor see mods/xdecor
+-- Ugly hack to determine if an item has the function `minetest.item_eat` in its definition.
+local function eatable(def)
+	local on_use_def = def.on_use
+	if not on_use_def then return end
+	return string.format("%q", string.dump(on_use_def)):find("item_eat")
+end
+
+minetest.after(0, function()
+	local vf = io.open(minetest.get_worldpath().."/vitamins.lua", "w")
+	for name, def in pairs(minetest.registered_items) do
+		if eatable(def) then
+			if not vits[name] then
+
+				local v = {}
+				for _, d in ipairs(vitamins.list) do
+					if math.floor(math.random(5)) == 1 then
+						v[d[1]] = math.floor(math.random(10)+1)
+					end
+				end
+				vits[name] = v
+			end
+		end
+	end
+	vf:write(minetest.serialize(vits))
+	vf:close()
+	for n, d in pairs(vits) do
+		vits[n] = vitamins.get_def(d)
+	end
+end)
